@@ -1,0 +1,17 @@
+1.確認是否在cmd下pip install 所有的 module
+2.確認是否有用pandas.read_csv，如果有請加上參數
+  pd.read_csv("D:/Finance List.csv",encoding = "ISO-8859-1", engine='python')
+  ISO-8859-1=UTF-8
+3.輸入Pyinstaller -D ./***.py，並去確認資料夾下，是否有所有import的module
+  如果沒有請在pyinstaller 嘗試下列參數：
+  ^. --hidden-import=module #尋找隱藏的module
+  ^. --collect-data module  #收集所有module的資料
+  ^. --add-data "DataPath" 
+
+Pyinstaller -F ./***.py
+完整的cmd碼
+pyinstaller -p D:/python/investpy 
+           --hidden-import=investpy #尋找隱藏的
+           --additional-hooks-dir d:/python/investpy/indices.py 
+           --collect-data investpy 
+           -F d:/python/IFinance.py
